@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Liste des Capteurs</h2>
+<a href="{% url 'add_capteur' %}" class="btn btn-primary mb-3">Ajouter un capteur</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Numéro Capteur</th>
+            <th>Nom</th>
+            <th>Piece</th>
+            <th>Emplacement</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for capteur in capteurs %}
+        <tr>
+            <td>{{ capteur.idcapteur }}</td>
+            <td>{{ capteur.nom }}</td>
+            <td>{{ capteur.piece }}</td>
+            <td>{{ capteur.emplacement }}</td>
+                        <td>
+                <a href="{% url 'view_capteur' capteur.id %}" class="btn btn-info">Voir</a>
+                <a href="{% url 'edit_capteur' capteur.id %}" class="btn btn-info">Modifier</a>
+                <a href="{% url 'delete_capteur' capteur.id %}" class="btn btn-danger">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

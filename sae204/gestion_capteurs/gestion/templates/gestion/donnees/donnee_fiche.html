@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Fiche des Donnees</h2>
+<form method="get" action="{% url 'donnee_fiche' %}">
+    <div class="form-group">
+        <label for="capteur_id">Capteur</label>
+        <select name="capteur_id" id="capteur_id" class="form-control">
+            <option value="">Tous</option>
+            {% for capteur in capteurs %}
+                <option value="{{ capteur.id }}" {% if request.GET.capteur_id == capteur.id|stringformat:"s" %}selected{% endif %}>{{ capteur.nom }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="start_date">Date de début</label>
+        <input type="date" id="start_date" name="start_date" class="form-control" value="{{ request.GET.start_date }}">
+    </div>
+    <div class="form-group">
+        <label for="end_date">Date de fin</label>
+        <input type="date" id="end_date" name="end_date" class="form-control" value="{{ request.GET.end_date }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrer</button>
+
+</form>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th>Capteur</th>
+            <th>Jour</th>
+            <th>Heure</th>
+            <th>Température</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for donnee in donnees %}
+        <tr>
+            <td>{{ donnee.capteur.nom }}</td>
+            <td>{{ donnee.jour }}</td>
+            <td>{{ donnee.heure }}</td>
+            <td>{{ donnee.temp }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

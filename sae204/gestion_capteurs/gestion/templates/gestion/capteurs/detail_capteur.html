@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Détails du Capteur</h2>
+<table class="table">
+    <tr>
+        <th>Numéro de Capteur</th>
+        <td>{{ capteur.idcapteur }}</td>
+    </tr>
+    <tr>
+        <th>Nom</th>
+        <td>{{ capteur.nom }}</td>
+    </tr>
+    <tr>
+        <th>Pièce</th>
+        <td>{{ capteur.piece }}</td>
+    </tr>
+      <tr>
+        <th>Emplacement</th>
+        <td>{{ capteur.emplacement }}</td>
+    </tr>
+
+</table>
+<a href="{% url 'list_capteurs' %}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

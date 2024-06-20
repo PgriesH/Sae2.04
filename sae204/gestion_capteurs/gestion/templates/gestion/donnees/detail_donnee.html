@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Détails concernant les données sélectionées</h2>
+<table class="table">
+    <tr>
+        <th>Capteur</th>
+        <td>{{ donnee.capteur.nom }}</td>
+    </tr>
+    <tr>
+        <th>Jour</th>
+        <td>{{ donnee.jour }}</td>
+    </tr>
+    <tr>
+        <th>Heure</th>
+        <td>{{ donnee.heure }}</td>
+    </tr>
+    <tr>
+        <th>Température</th>
+        <td>{{ donnee.temp }}</td>
+    </tr>
+</table>
+<a href="{% url 'list_donnees' %}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}

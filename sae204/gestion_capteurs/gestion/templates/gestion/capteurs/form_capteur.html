@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% if capteur.id %}Modifier{% else %}Ajouter{% endif %} un Capteur</h2>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_idcapteur">Numéro capteur</label>
+        <input type="text" class="form-control" id="id_idcapteur" name="idcapteur" value="{{ form.idcapteur.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_nom">Nom</label>
+        <input type="text" class="form-control" id="id_nom" name="nom" value="{{ form.nom.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_piece">Pièce</label>
+        <input type="text" class="form-control" id="id_piece" name="piece" value="{{ form.piece.value|default_if_none:'' }}">
+    </div>
+    <div class="form-group">
+        <label for="id_emplacement">Emplacement</label>
+        <input type="text" class="form-control" id="id_emplacement" name="emplacement" value="{{ form.emplacement.value|default_if_none:'' }}">
+    </div>
+    <button type="submit" class="btn btn-success">Sauvegarder</button>
+    <a href="{% url 'list_capteurs' %}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

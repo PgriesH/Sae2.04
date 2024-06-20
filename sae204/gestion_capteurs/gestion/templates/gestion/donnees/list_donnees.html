@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Liste des données enregistrées par les capteurs</h2>
+<div class="d-flex justify-content-between mb-3">
+    <a href="{% url 'add_donnee' %}" class="btn btn-primary">Ajouter une donnée capteur </a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Capteur</th>
+            <th>Jour</th>
+            <th>Heure</th>
+            <th>Température mesurée</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for donnee in donnees %}
+        <tr>
+            <td>{{ donnee.capteur.nom }}</td>
+            <td>{{ donnee.jour }}</td>
+            <td>{{ donnee.heure }}</td>
+            <td>{{ donnee.temp }}</td>
+            <td>
+                <a href="{% url 'view_donnee' donnee.id %}" class="btn btn-info">Voir</a>
+                <a href="{% url 'edit_donnee' donnee.id %}" class="btn btn-info">Modifier</a>
+                <a href="{% url 'delete_donnee' donnee.id %}" class="btn btn-danger">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bienvenue dans le Système de Gestion des Capteurs</h1>
+<p>Cette application vous permet de gérer les capteurs et les données de températures enregistrées.</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Capteurs</div>
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Capteurs</h5>
+                <p class="card-text">Ajoutez, modifiez ou supprimez des informations concernant les capteurs.</p>
+                <a href="{% url 'list_capteurs' %}" class="btn btn-light">Voir les Capteurs</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Données</div>
+            <div class="card-body">
+                <h5 class="card-title">Gérer les Données des Capteurs</h5>
+                <p class="card-text">Ajoutez, modifiez ou supprimez les données enregistrées par les capteurs.</p>
+                <a href="{% url 'list_donnees' %}" class="btn btn-light">Voir les Données</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

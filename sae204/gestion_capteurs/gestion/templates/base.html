@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des capteurs</title>
+    <!-- Lien vers la feuille de style Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'home' %}">Accueil</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list_capteurs' %}">Capteurs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list_donnees' %}">Données</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'donnee_fiche' %}">Liste filtrée des données</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        {% block content %}
+        <!-- Le contenu spécifique de chaque page viendra ici -->
+        {% endblock content %}
+    </div>

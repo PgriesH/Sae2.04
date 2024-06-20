@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% if donnee.id %}Modifier{% else %}Ajouter{% endif %} une donnée</h2>
+<form method="post" class="mt-4">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_capteur">Capteur</label>
+        <select class="form-control" id="id_capteur" name="capteur">
+            {% for capteur in form.capteur.field.queryset %}
+                <option value="{{ capteur.id }}" {% if form.capteur.value == capteur.id %}selected{% endif %}>{{ capteur.nom }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="id_jour">Jour de prise de mesure</label>
+            <input type="date" class="form-control" id="id_jour" name="jour" value="{{ form.jour.value|default_if_none:'' }}">
+    </div>
+      <div class="form-group">
+        <label for="id_heure">Heure de prise de mesure</label>
+        <input type="time" class="form-control" id="id_heure" name="heure" value="{{ form.heure.value|default_if_none:'' }}">
+    </div>
+        <div class="form-group">
+        <label for="id_temp">Température</label>
+        <input type="text" class="form-control" id="id_temp" name="temp" value="{{ form.temp.value|default_if_none:'' }}">
+    </div>
+    <button type="submit" class="btn btn-success">Sauvegarder</button>
+    <a href="{% url 'list_donnees' %}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}
